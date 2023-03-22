@@ -1,4 +1,4 @@
-contract: Asslot # The class name of the challenge contract
+contract: MerkleCounter # The class name of the challenge contract
 
 description: |
   Can you make the isSolved() function return true?

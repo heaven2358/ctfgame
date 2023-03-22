@@ -1,4 +1,4 @@
-contract: ExistingStock # The class name of the challenge contract
+contract: SmartCounter # The class name of the challenge contract
 
 description: |
   Can you make the isSolved() function return true?
@@ -10,5 +10,3 @@ constructor:
 show_source: True        # Set to False if you don't want the contract source code to be displayed to players
 
 # solved_event: EmitFlag # Verify the challenge has been solved by checking if the event was emitted instead of calling the isSolved() view function by default
-
-

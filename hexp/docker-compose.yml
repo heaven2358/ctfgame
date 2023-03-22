@@ -3,7 +3,7 @@ services:
   challenge:
     image: chainflag/eth-challenge-base:main
     ports:
-      - "23000:20000"
+      - "24000:20000"
     env_file:
       - .env
     volumes:
