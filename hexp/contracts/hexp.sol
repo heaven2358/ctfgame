@@ -2,7 +2,7 @@ pragma solidity ^0.8.0;
 
 contract Hexp {
     address public immutable target;
-    bool flag;
+    bool public flag;
 
     constructor() {
         bytes memory code = hex"3d602d80600a3d3981f362ffffff80600a43034016903a1681146016576033fe5b6000f3";

@@ -3,7 +3,7 @@ pragma solidity 0.8.12;
 contract Numen {
     address private owner;
 
-    bool flag;
+    bool public flag;
 
     constructor(){
         owner = msg.sender;

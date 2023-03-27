@@ -2,7 +2,8 @@
 pragma solidity ^0.8.17;
 
 contract Asslot {
-    bool public flag;
+
+    string greeting;
 
     event Win(address);
 
@@ -27,11 +28,12 @@ contract Asslot {
             if gt(size, shl(0x6, 1)) { invalid() }
         }
         func();
-        flag = true;
         emit Win(tx.origin);
+        greeting = "getflag";
     }
 
     function isSolved() public view returns (bool) {
-        return flag;
+        string memory expected = "getflag";
+        return keccak256(abi.encodePacked(expected)) == keccak256(abi.encodePacked(greeting));
     }
 }

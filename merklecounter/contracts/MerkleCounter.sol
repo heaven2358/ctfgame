@@ -224,7 +224,7 @@ contract MerkleCounter {
     bytes32 private root=hex"139dbeaa356c79aaa48d4ea57d05243da57fef0ffa76b2fc5729faf0f00e096f";
     mapping(string => string) public verified;
     event log_string(string x);
-    bool flag = false;
+    bool public flag;
     function verify(bytes32[] memory proof,string memory k,string memory v) public {
         bytes32 leaf = keccak256(bytes.concat(keccak256(abi.encode(k, v))));
         require(bytes(verified[k]).length<1,"Already verified");
