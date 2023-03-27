@@ -69,9 +69,10 @@ contract Existing{
         _transfer(address(this),msg.sender,add);
     }
 
-    function isSolved() external returns(bool) {
-        require(balanceOf[msg.sender] >= totalSupply,"Try again");
-        emit SendFlag(msg.sender);
-        return true;
+    function isSolved() external view returns(bool) {
+        if(balanceOf[msg.sender] >= totalSupply) {
+            return true;
+        }
+        return false;
     }
 }

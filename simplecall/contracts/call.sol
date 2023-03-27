@@ -80,13 +80,10 @@ contract ExistingStock {
 	    emit Withdraw(msg.sender, number);
 	}
 
-	function isSolved() public returns(bool){
-        require(frequency == 1);
-	    require(balanceOf[msg.sender] > 200000);
-	    require(allowance[address(this)][msg.sender] > 200000);
-	    result = true;
-        frequency += 1;
-        emit Target(msg.sender, result);
-        return result;
+	function isSolved() public view returns(bool){
+	    if(balanceOf[msg.sender] > 200000 && allowance[address(this)][msg.sender] > 200000){
+			return true;
+		}
+        return false;
     }
 }
