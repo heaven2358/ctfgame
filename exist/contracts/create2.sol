@@ -20,7 +20,7 @@ contract Existing{
         balanceOf[address(this)] += totalSupply;
     }
 
-    function transfer(address to,uint amount) public {
+    function transfer(address to,uint amount) external {
         _transfer(msg.sender,to,amount);
     }
 

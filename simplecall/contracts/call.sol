@@ -23,8 +23,7 @@ contract ExistingStock {
 	mapping (address => uint) public balanceOf;
 	mapping (address => mapping (address => uint)) public allowance;
 
-	constructor(address secret) public {
-        reserve = secret;
+	constructor() public {
 	    owner = msg.sender;
 	    balanceOf[owner] = totalSupply;
 	}
@@ -59,7 +58,6 @@ contract ExistingStock {
 	}
 
 	function privilegedborrowing(uint256 value,address secure,address target,bytes memory data) public {
-	    require(reserve == secure);
         require(Lock == false && value >= 0 && value <= 1000);
 	    balanceOf[address(this)] -= value;
 	    balanceOf[target] += value;
