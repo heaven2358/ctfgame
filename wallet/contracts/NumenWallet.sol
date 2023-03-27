@@ -252,7 +252,7 @@ contract Wallet {
         }
     }
 
-    function isSolve() public view returns(bool){
+    function isSolved() public view returns(bool){
         return IERC20(token).balanceOf(address(this)) == 0;
     }
     
