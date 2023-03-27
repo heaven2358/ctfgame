@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-
 contract Asslot {
     bool flag;
+
+    event Win(address);
 
     constructor() {}
 
@@ -26,10 +27,11 @@ contract Asslot {
             if gt(size, shl(0x6, 1)) { invalid() }
         }
         func();
+        emit Win(tx.origin);
         flag = true;
     }
 
-     function isSolved() public view returns (bool) {
+    function isSolved() public view returns (bool) {
         return flag;
-     }
+    }
 }
