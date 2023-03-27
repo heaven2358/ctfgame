@@ -5,6 +5,8 @@ pragma solidity ^0.8.17;
 contract Asslot {
     bool flag;
 
+    constructor() {}
+
     function func() private view {
         assembly {
             for { let i := 0 } lt(i, 0x4) { i := add(i, 1) } {
