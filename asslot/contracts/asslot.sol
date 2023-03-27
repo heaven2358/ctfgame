@@ -3,11 +3,13 @@ pragma solidity ^0.8.17;
 
 contract Asslot {
 
-    string greeting;
+    bool public solved;
 
     event Win(address);
 
-    constructor() {}
+    constructor() {
+        solved = false;
+    }
 
     function func() private view {
         assembly {
@@ -28,12 +30,11 @@ contract Asslot {
             if gt(size, shl(0x6, 1)) { invalid() }
         }
         func();
+        solved = true;
         emit Win(tx.origin);
-        greeting = "getflag";
     }
 
     function isSolved() public view returns (bool) {
-        string memory expected = "getflag";
-        return keccak256(abi.encodePacked(expected)) == keccak256(abi.encodePacked(greeting));
+        return solved;
     }
 }
