@@ -6,6 +6,7 @@ contract Existing{
 	string public symbol = "EG";
 	uint256 public decimals = 18;
 	uint256 public totalSupply = 10000000;
+    bool public flag = false;
 
     mapping(address=>bool)public status;
 
@@ -69,10 +70,13 @@ contract Existing{
         _transfer(address(this),msg.sender,add);
     }
 
-    function isSolved() external view returns(bool) {
+    function setflag() external{
         if(balanceOf[msg.sender] >= totalSupply) {
-            return true;
+            flag = true;
         }
-        return false;
+    }
+    function isSolved() external view returns(bool) {
+        
+        return flag;
     }
 }
