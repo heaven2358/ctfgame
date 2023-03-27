@@ -1,12 +1,12 @@
 pragma solidity ^0.8.13;
 
-
 contract Deployer {
     constructor(bytes memory code) { assembly { return (add(code, 0x20), mload(code)) } }
 }
 contract SmartCounter{
     address public owner;
     address public target;
+    bool flag=false;
     constructor(address owner_){
         owner=owner_;
     }
@@ -17,9 +17,10 @@ contract SmartCounter{
 
     function A_delegateccall(bytes memory data) public{
         (bool success,bytes memory returnData)=target.delegatecall(data);
+        require(owner==msg.sender);
+        flag=true;
     }
     function isSolved() public view returns(bool){
-        require(owner==msg.sender);
-        return true;
+        return flag;
     }
 }
