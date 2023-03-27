@@ -234,7 +234,7 @@ contract MerkleCounter {
         emit log_string("success");
     }
 
-    function isSolve() public view returns(bool) {
+    function isSolved() public view returns(bool) {
         return flag;
     }
 

@@ -18,7 +18,7 @@ contract SmartCounter{
     function A_delegateccall(bytes memory data) public{
         (bool success,bytes memory returnData)=target.delegatecall(data);
     }
-    function isSolve() public view returns(bool){
+    function isSolved() public view returns(bool){
         require(owner==msg.sender);
         return true;
     }

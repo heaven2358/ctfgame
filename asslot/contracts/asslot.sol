@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
+
 contract Asslot {
-    event Success(address winner);
+    bool flag;
 
     function func() private view {
         assembly {
@@ -17,13 +18,16 @@ contract Asslot {
         }
     }
 
-    function isSolved() external returns (bool) {
+    function f00000000_bvvvdlt() external {
         assembly {
             let size := extcodesize(caller())
             if gt(size, shl(0x6, 1)) { invalid() }
         }
         func();
-        emit Success(msg.sender);
-        return true;
+        flag = true;
     }
+
+     function isSolved() public view returns (bool) {
+        return flag;
+     }
 }

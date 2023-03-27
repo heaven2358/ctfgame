@@ -74,7 +74,7 @@ contract Numen {
         flag = true;
     }
 
-    function isSolve() public view returns(bool){
+    function isSolved() public view returns(bool){
         return flag;
     }
    
