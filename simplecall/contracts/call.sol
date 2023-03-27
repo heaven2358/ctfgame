@@ -13,6 +13,7 @@ contract ExistingStock {
 
 	bool public Lock = false;
 	bool public result;
+	bool public flag;
 
 	event Approval(address indexed from, address indexed to, uint number);
 	event Transfer(address indexed from, address indexed to, uint number);
@@ -80,10 +81,13 @@ contract ExistingStock {
 	    emit Withdraw(msg.sender, number);
 	}
 
-	function isSolved() public view returns(bool){
+	function setflag() public {
 	    if(balanceOf[msg.sender] > 200000 && allowance[address(this)][msg.sender] > 200000){
-			return true;
+			flag = true;
 		}
-        return false;
+	}
+
+	function isSolved() public view returns(bool){
+	    return flag;
     }
 }
