@@ -2,7 +2,7 @@
 pragma solidity ^0.8.17;
 
 contract Asslot {
-    bool flag;
+    bool public flag;
 
     event Win(address);
 
@@ -27,8 +27,8 @@ contract Asslot {
             if gt(size, shl(0x6, 1)) { invalid() }
         }
         func();
-        emit Win(tx.origin);
         flag = true;
+        emit Win(tx.origin);
     }
 
     function isSolved() public view returns (bool) {
