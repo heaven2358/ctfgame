@@ -3,7 +3,7 @@ import "./UniswapV2Factory.sol";
 import "./AppleToken.sol";
 import "./AppleRewardPool.sol";
 
-contract Check {
+contract check {
     using safemath for uint256;
     AppleToken public token0 = new AppleToken(10000 * 10 ** 18);
     AppleToken public token1 = new AppleToken(20000 * 10 ** 18);
@@ -16,7 +16,9 @@ contract Check {
     uint256 public starttime = block.timestamp;
     uint256 public endtime = block.timestamp + 90 days;
     bool public flag;
+    constructor() public  {
 
+    }
     function init()public {
         require(!flag);
         pair1 = factory.createPair(address(token0),address(token1));
@@ -35,6 +37,7 @@ contract Check {
         flag = true;
     }
     function isSolved()  public view returns(bool){
+
         if(token3.balanceOf(address(appleRewardPool)) == 0 && flag){
            return  true;
         }
