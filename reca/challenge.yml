@@ -1,4 +1,4 @@
-contract: Check # The class name of the challenge contract
+contract: check # The class name of the challenge contract
 
 description: |
   Can you make the isSolved() function return true?
