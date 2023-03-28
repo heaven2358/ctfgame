@@ -5,31 +5,20 @@ import "./AppleRewardPool.sol";
 
 contract check {
     using safemath for uint256;
-    AppleToken public token0;
-    AppleToken public token1;
-    AppleToken public token2;
-    AppleToken public token3;
+    AppleToken public token0 = new AppleToken(10000 * 10 ** 18);
+    AppleToken public token1 = new AppleToken(20000 * 10 ** 18);
+    AppleToken public token2 = new AppleToken(20000 * 10 ** 18);
+    AppleToken public token3 = new AppleToken(10000 * 10 ** 18);
     UniswapV2Factory public factory  = new UniswapV2Factory(address(this));
     AppleRewardPool public appleRewardPool;
     address public pair1;
     address public pair2;
     uint256 public starttime = block.timestamp;
     uint256 public endtime = block.timestamp + 90 days;
-    bool public flag1;
-    bool public flag2;
-    constructor() public {
+    bool public flag;
 
-    }
-    function init1() public {
-        require(flag1 == false);
-        token0 = new AppleToken(10000 * 10 ** 18);
-        token1 = new AppleToken(20000 * 10 ** 18);
-        token2 = new AppleToken(20000 * 10 ** 18);
-        token3 = new AppleToken(10000 * 10 ** 18);
-        flag1 = true;
-    }
-    function init2() public{
-        require(flag2 == false);
+    function init()public {
+        require(!flag);
         pair1 = factory.createPair(address(token0),address(token1));
         token0.transfer(pair1,10000 * 10 ** 18);
         token1.transfer(pair1,10000 * 10 ** 18);        
@@ -43,11 +32,11 @@ contract check {
         token3.transfer(address(appleRewardPool),10000 * 10 ** 18);
         appleRewardPool.addPool(IERCLike(address(token1)),starttime, endtime,0,false);
         appleRewardPool.addPool(IERCLike(address(token2)),starttime, endtime,0,false);
-        flag2 =true;
+        flag = true;
     }
     function isSolved()  public view returns(bool){
 
-        if(token3.balanceOf(address(appleRewardPool)) == 0 &&  flag1 == true && flag2 ==true){
+        if(token3.balanceOf(address(appleRewardPool)) == 0 && flag){
            return  true;
         }
         return false;

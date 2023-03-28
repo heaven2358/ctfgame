@@ -423,12 +423,7 @@ contract AppleRewardPool is Ownable {
         return poolinfo;
     }
 
-    function setApplePertime(uint256 _pid, uint256 _ApplePertime) public onlyOwner validatePool(_pid){
-        PoolInfo storage pool = poolinfo[_pid];
-        updatePool(_pid);
-        _ApplePertime = _ApplePertime.mul(1e18).div(86400);
-        pool.ApplePertime = _ApplePertime;
-    }
+
 
     function addPool(IERCLike _token, uint256 _starttime, uint256 _endtime, uint256 _ApplePertime,  bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
