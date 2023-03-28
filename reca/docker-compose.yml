@@ -1,7 +1,8 @@
 version: "3.3"
 services:
   challenge:
-    image: chainflag/eth-challenge-base:main
+    image: chainflag/solidctf:main
+    restart: unless-stopped
     ports:
       - "27000:20000"
     env_file:
