@@ -1,13 +1,13 @@
 version: "3.3"
 services:
   challenge:
-    image: chainflag/eth-challenge-base:main
+    image: chainflag/solidctf:main
     restart: unless-stopped
     ports:
       - "27000:20000"
     env_file:
       - .env
     volumes:
-      - ./flag.txt:/home/ctf/flag.txt
-      - ./contracts:/home/ctf/contracts
-      - ./challenge.yml:/home/ctf/challenge.yml
+      - ./flag.txt:/ctf/flag.txt
+      - ./contracts:/ctf/contracts
+      - ./challenge.yml:/ctf/challenge.yml
