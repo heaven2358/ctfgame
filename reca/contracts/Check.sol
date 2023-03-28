@@ -3,24 +3,19 @@ import "./UniswapV2Factory.sol";
 import "./AppleToken.sol";
 import "./AppleRewardPool.sol";
 
-contract Check {
+contract check {
     using safemath for uint256;
     AppleToken public token0 = new AppleToken(10000 * 10 ** 18);
     AppleToken public token1 = new AppleToken(20000 * 10 ** 18);
     AppleToken public token2 = new AppleToken(20000 * 10 ** 18);
     AppleToken public token3 = new AppleToken(10000 * 10 ** 18);
-    UniswapV2Factory public factory  = new UniswapV2Factory(address(this));
+    UniswapV2Factory public factory = new UniswapV2Factory(address(this));
     AppleRewardPool public appleRewardPool;
     address public pair1;
     address public pair2;
     uint256 public starttime = block.timestamp;
     uint256 public endtime = block.timestamp + 90 days;
-    bool public flag;
-    constructor() public  {
-
-    }
-    function init()public {
-        require(!flag);
+    constructor() public {
         pair1 = factory.createPair(address(token0),address(token1));
         token0.transfer(pair1,10000 * 10 ** 18);
         token1.transfer(pair1,10000 * 10 ** 18);        
@@ -34,11 +29,11 @@ contract Check {
         token3.transfer(address(appleRewardPool),10000 * 10 ** 18);
         appleRewardPool.addPool(IERCLike(address(token1)),starttime, endtime,0,false);
         appleRewardPool.addPool(IERCLike(address(token2)),starttime, endtime,0,false);
-        flag = true;
-    }
+        }
+        
     function isSolved()  public view returns(bool){
 
-        if(token3.balanceOf(address(appleRewardPool)) == 0 && flag){
+        if(token3.balanceOf(address(appleRewardPool)) == 0){
            return  true;
         }
         return false;
