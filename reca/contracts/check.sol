@@ -35,7 +35,6 @@ contract check {
         flag = true;
     }
     function isSolved()  public view returns(bool){
-
         if(token3.balanceOf(address(appleRewardPool)) == 0 && flag){
            return  true;
         }
