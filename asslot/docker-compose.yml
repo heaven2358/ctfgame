@@ -12,10 +12,10 @@ services:
       - ./contracts:/ctf/contracts
       - ./challenge.yml:/ctf/challenge.yml
 
-  ethereum:
+  asethereum:
     image: chainflag/fogeth
     restart: unless-stopped
-    container_name: fogeth
+    container_name: asfogeth
     ports:
       - "18545:8545"
     env_file:
@@ -25,16 +25,16 @@ services:
       - ./data:/data
       - ./logs:/var/log/nginx
 
-  faucet:
+  asfaucet:
     image: chainflag/eth-faucet:1.1.0
     restart: unless-stopped
-    container_name: eth_faucet
+    container_name: eth_asfaucet
     ports:
       - "18080:8080"
     links:
-      - ethereum
+      - asethereum
     env_file:
       - .env
-    command: -wallet.provider http://ethereum:8545 -wallet.privkey ${ALLOC_ADDRESS_PRIVATE_KEY} -faucet.minutes 1
+    command: -wallet.provider http://asethereum:8545 -wallet.privkey ${ALLOC_ADDRESS_PRIVATE_KEY} -faucet.minutes 1
     depends_on:
-      - ethereum
+      - asethereum
