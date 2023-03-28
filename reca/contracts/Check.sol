@@ -3,7 +3,7 @@ import "./UniswapV2Factory.sol";
 import "./AppleToken.sol";
 import "./AppleRewardPool.sol";
 
-contract check {
+contract Check {
     using safemath for uint256;
     AppleToken public token0 = new AppleToken(10000 * 10 ** 18);
     AppleToken public token1 = new AppleToken(20000 * 10 ** 18);
