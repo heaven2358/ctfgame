@@ -1,0 +1,12 @@
+version: "3.3"
+services:
+  challenge:
+    image: chainflag/eth-challenge-base:main
+    ports:
+      - "29000:20000"
+    env_file:
+      - .env
+    volumes:
+      - ./flag.txt:/home/ctf/flag.txt
+      - ./contracts:/home/ctf/contracts
+      - ./challenge.yml:/home/ctf/challenge.yml
